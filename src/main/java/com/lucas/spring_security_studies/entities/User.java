@@ -1,5 +1,6 @@
 package com.lucas.spring_security_studies.entities;
 
+import com.lucas.spring_security_studies.entities.enums.Role;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
