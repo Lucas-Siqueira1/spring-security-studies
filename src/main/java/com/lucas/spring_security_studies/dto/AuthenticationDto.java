@@ -1,6 +1,5 @@
 package com.lucas.spring_security_studies.dto;
 
-import com.lucas.spring_security_studies.entities.enums.Role;
 import lombok.*;
 
 @NoArgsConstructor
@@ -9,11 +8,8 @@ import lombok.*;
 @Setter
 @ToString
 @Builder
-public class UserRequestDto {
+public class AuthenticationDto {
 
-    private String name;
     private String email;
     private String password;
-    private Role role;
-
 }
