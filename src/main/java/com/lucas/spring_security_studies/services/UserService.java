@@ -27,7 +27,7 @@ public class UserService {
         return new UserResponseDto(obj.getId(), obj.getName(), obj.getEmail());
     }
 
-    public UserResponseDto insert(UserRequestDto dto) {
+    public UserResponseDto insert( UserRequestDto dto) {
         User user = new User();
         user.setName(dto.getName());
         user.setEmail(dto.getEmail());
