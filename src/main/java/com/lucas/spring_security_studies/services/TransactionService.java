@@ -3,10 +3,12 @@ import com.lucas.spring_security_studies.dto.TransactionRequestDto;
 import com.lucas.spring_security_studies.dto.TransactionResponseDto;
 import com.lucas.spring_security_studies.entities.Account;
 import com.lucas.spring_security_studies.entities.Transaction;
+import com.lucas.spring_security_studies.entities.User;
 import com.lucas.spring_security_studies.exceptions.ResourceNotFoundException;
 import com.lucas.spring_security_studies.repository.AccountRepository;
 import com.lucas.spring_security_studies.repository.TransactionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -48,6 +50,10 @@ public class TransactionService {
         transaction.setValue(dto.getValue());
         transaction.setMoment(Instant.now());
         receiverAccount.deposit(dto.getValue());
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if(!senderAccount.getAccountOwner().getId().equals(user.getId())) {
+            throw new RuntimeException("Forbidden");
+        }
         senderAccount.withdraw(dto.getValue());
         accountRepository.save(receiverAccount);
         accountRepository.save(senderAccount);

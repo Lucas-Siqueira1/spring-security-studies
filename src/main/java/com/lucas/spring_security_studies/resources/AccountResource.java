@@ -32,6 +32,12 @@ public class AccountResource {
         return ResponseEntity.ok().body(obj);
     }
 
+    @GetMapping("/me")
+    public ResponseEntity<AccountResponseDto> findMyAccount() {
+        AccountResponseDto obj = accountService.findMyAccount();
+        return ResponseEntity.ok().body(obj);
+    }
+
     @PostMapping
     public ResponseEntity<AccountResponseDto> insert(@RequestBody AccountRequestDto obj) {
         AccountResponseDto saved = accountService.insert(obj);

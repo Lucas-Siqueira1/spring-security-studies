@@ -11,6 +11,5 @@ import lombok.*;
 @Builder
 public class AccountRequestDto {
 
-    private User accountOwner;
     private String accountNumber;
 }
