@@ -21,7 +21,7 @@ public class Transaction {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private Instant moment;
-    private Double value;
+    private Double valueTransaction;
 
     @ManyToOne
     @JoinColumn(name = "sender_account_id", nullable = true)

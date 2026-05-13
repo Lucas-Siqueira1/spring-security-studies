@@ -27,7 +27,7 @@ public class TransactionService {
         List<Transaction> transactions = transactionRepository.findAll();
         return transactions.stream()
                 .map(t -> new TransactionResponseDto(t.getId(), t.getSenderAccount().getId(), t.getReceiverAccount().getId(),
-                        t.getValue(), t.getMoment()))
+                        t.getValueTransaction(), t.getMoment()))
                 .toList();
     }
 
@@ -35,7 +35,7 @@ public class TransactionService {
         Transaction transaction = transactionRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException(id));
         return new TransactionResponseDto(transaction.getId(), transaction.getSenderAccount().getId(), transaction.getReceiverAccount().getId(),
-                transaction.getValue(), transaction.getMoment());
+                transaction.getValueTransaction(), transaction.getMoment());
     }
 
     @Transactional
@@ -47,7 +47,7 @@ public class TransactionService {
                 .orElseThrow(() -> new ResourceNotFoundException(dto.getSenderAccountId()));
         transaction.setReceiverAccount(receiverAccount);
         transaction.setSenderAccount(senderAccount);
-        transaction.setValue(dto.getValue());
+        transaction.setValueTransaction(dto.getValue());
         transaction.setMoment(Instant.now());
         receiverAccount.deposit(dto.getValue());
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -59,7 +59,7 @@ public class TransactionService {
         accountRepository.save(senderAccount);
         Transaction saved = transactionRepository.save(transaction);
         return new TransactionResponseDto(saved.getId(), saved.getSenderAccount().getId(), saved.getReceiverAccount().getId(),
-                saved.getValue(), saved.getMoment());
+                saved.getValueTransaction(), saved.getMoment());
     }
 
 }
