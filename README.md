@@ -31,7 +31,7 @@ Implementei um tratamento de exceções robusto dentro do `doFilterInternal`, ga
 
 ---
 
-## 🛠️ Tecnologias Utilizadas
+## Tecnologias Utilizadas
 
 - **Java 17**
 - **Spring Boot 3.x**
@@ -43,7 +43,7 @@ Implementei um tratamento de exceções robusto dentro do `doFilterInternal`, ga
 
 ---
 
-## 📂 Estrutura Principal
+## Estrutura Principal
 
 - `src/main/java/.../security/SecurityFilter.java`: Filtro customizado onde apliquei a lógica de interceptação de tokens e tratamento de exceções.
 - `src/main/java/.../security/SecurityConfig.java`: Configuração da `SecurityFilterChain`, definições de rotas públicas e privadas.
@@ -51,7 +51,7 @@ Implementei um tratamento de exceções robusto dentro do `doFilterInternal`, ga
 
 ---
 
-## 🔧 Como Executar
+## Como Executar
 
 1. Clone o repositório:
    ```bash
